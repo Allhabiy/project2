@@ -41,11 +41,17 @@ def index():
     
     # extract data needed for visuals
     # TODO: Below is an example - modify to extract data for your own visuals
+
+      ## 1st plot data
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
 
-    help_by_genre = df.groupby('genre')['medical_help'].sum()
-    
+    ## 2nd plot data
+    labels=df.iloc[:,4:].sum().sort_values(ascending=False).reset_index()
+    labels.columns=['category','count']
+    label_values=labels['count'].values.tolist()
+    label_names=labels['category'].values.tolist()
+
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
@@ -70,23 +76,24 @@ def index():
         {
             'data': [
                 Bar(
-                    x=genre_names,
-                    y=help_by_genre
+                    x=label_names,
+                    y=label_values,
+                    marker = dict(color='green')
                 )
             ],
 
             'layout': {
-                'title': 'Medical help provided per Genre',
+                'title': "Chart Frequency of Categories of Messages",
                 'yaxis': {
-                    'title': "Nº of medical helps"
+                    'title':"Message Category Frequency"
                 },
                 'xaxis': {
-                    'title': "Genre"
+                    'title': "Categories"
                 }
             }
         }
     ]
-    
+
     # encode plotly graphs in JSON
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
     graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
