@@ -21,6 +21,7 @@ def load_data(messages_filepath, categories_filepath):
     return df
 
 
+
 def clean_data(df):
     """Drop duplicates from the input (DataFrame)"""
     df.drop_duplicates(inplace=True)
