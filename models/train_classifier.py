@@ -56,6 +56,13 @@ def build_model():
     model = GridSearchCV(pipeline,
                          param_grid=parameters,
                          scoring='accuracy',
+                         cv=4)
+
+    return model
+
+ model = GridSearchCV(pipeline,
+                         param_grid=parameters,
+                         scoring='accuracy',
                          cv=5)
 
     return model
