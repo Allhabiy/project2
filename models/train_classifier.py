@@ -53,12 +53,6 @@ def build_model():
         'multi-rf__estimator__min_samples_leaf': [10, 100]
     }
 
-    model = GridSearchCV(pipeline,
-                         param_grid=parameters,
-                         scoring='accuracy',
-                         cv=4)
-
-    return model
 
  model = GridSearchCV(pipeline,
                          param_grid=parameters,
