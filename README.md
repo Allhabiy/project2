@@ -24,7 +24,7 @@ classifier.pkl contain the saved model from train_classifier.py
 
 The code should run with no issues using Python versions 3*
 
-Run the following commands in the project's root directory to set up your database and model
+*Run the following commands in the project's root directory to set up your database and model
 
 To run ETL pipeline that cleans data and stores in database python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db 
 
